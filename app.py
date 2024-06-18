@@ -59,7 +59,7 @@ trip_data = fetch_trip_data(trip_api_url)
 user_data = fetch_user_data(user_api_url, api_key)
 
 trip_data = trip_data[trip_data['tripStatus'] != 'Canceled'] 
-trip_data = trip_data[['price', 'Days', 'title', '_id']].dropna()
+trip_data = trip_data[['price', 'Days', 'title', '_id', 'discription', 'image', 'startDate', 'endDate', 'inclusion', 'company', 'tourismType', 'quantity', 'tripStatus']].dropna()
 trip_data.rename(columns={'Days': 'days', '_id': 'trip_id', 'title': 'Title'}, inplace=True)
 trip_data['Place'] = trip_data['Title'].apply(lambda x: x.split()[0])
 
@@ -110,7 +110,7 @@ def recommend_trips_api():
     if len(recommended_trips) > num_recommendations:
         recommended_trips = recommended_trips.sample(n=num_recommendations, random_state=42)
 
-    return jsonify(recommended_trips[['trip_id']].to_dict(orient='records'))
+    return jsonify(recommended_trips[['trip_id', 'Title', 'discription', 'image', 'startDate', 'endDate', 'inclusion', 'company', 'tourismType', 'quantity', 'price']].to_dict(orient='records'))
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
