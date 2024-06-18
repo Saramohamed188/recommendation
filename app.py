@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.decomposition import PCA
 from flask import Flask, request, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -112,4 +113,5 @@ def recommend_trips_api():
     return jsonify(recommended_trips[['trip_id']].to_dict(orient='records'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
