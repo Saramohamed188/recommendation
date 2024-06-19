@@ -80,6 +80,10 @@ def recommend_trips_api():
     user_id = request.args.get('user_id')
     num_recommendations = int(request.args.get('num_recommendations', 10))
     
+    user_data = fetch_user_data(user_api_url, api_key)
+    
+    print(f"Received request for user_id: {user_id} with num_recommendations: {num_recommendations}")
+
     user_favorites = user_data.loc[user_data['_id'] == user_id, 'favTrips'].values
     if user_favorites.size == 0 or not user_favorites[0]:
         return jsonify([])
