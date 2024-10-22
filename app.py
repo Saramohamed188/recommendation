@@ -51,7 +51,7 @@ def fetch_user_data(api_url, token):
     else:
         return pd.DataFrame()
 
-api_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDVhZDhmMGIzNGFlZjdjODk3MWVhMjYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTg0NjEyMDV9.-B3accDrrQLs_mvzS1uBO9n3dhClRNv3nl9qyW8o0aI'  
+api_key = 'token'  
 trip_api_url = 'https://traveller-in-egypt.onrender.com/api/v1/trip'
 user_api_url = 'https://traveller-in-egypt.onrender.com/api/v1/user'
 
